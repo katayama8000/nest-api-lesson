@@ -16,18 +16,18 @@ async function bootstrap() {
     ],
   });
   app.use(cookieParser());
-  app.use(
-    csurf({
-      cookie: {
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-      },
-      value: (req: Request) => {
-        return req.header('csrf-token');
-      },
-    }),
-  );
+  // app.use(
+  //   csurf({
+  //     cookie: {
+  //       httpOnly: true,
+  //       sameSite: 'none',
+  //       secure: true,
+  //     },
+  //     value: (req: Request) => {
+  //       return req.header('csrf-token');
+  //     },
+  //   }),
+  // );
   await app.listen(process.env.PORT || 3005);
 }
 bootstrap();

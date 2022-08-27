@@ -1,11 +1,4 @@
-### Nest.js-Prisma-Dockerでアプリを作るときのスターターキット
-
-#### 都度改善していく
-
-```bash
-yarn create next-app --example https://github.com/katayama8000/Nest.js-prisma-Docker-BASIC
-```
-
+[Frontend](https://github.com/katayama8000/next-api-lesson-frontend)
 ## Docker
 
 ```bash
@@ -37,15 +30,3 @@ nest g module user
 nest g controller user --no-spec
 nest g service user --no-spec
 ```
-
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-
-
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-"# nest-api-lesson" 

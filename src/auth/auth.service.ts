@@ -15,6 +15,7 @@ export class AuthService {
     private readonly config: ConfigService,
   ) {}
   async signUp(dto: AuthDto): Promise<Msg> {
+    // hash化
     const hashed = await bcrypt.hash(dto.password, 12);
     try {
       await this.prisma.user.create({
@@ -24,7 +25,7 @@ export class AuthService {
         },
       });
       return {
-        message: 'ok',
+        message: 'User created',
       };
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
@@ -35,18 +36,23 @@ export class AuthService {
       throw error;
     }
   }
+
   async login(dto: AuthDto): Promise<Jwt> {
     const user = await this.prisma.user.findUnique({
       where: {
         email: dto.email,
       },
     });
+    // ユーザーが存在しない場合
     if (!user) throw new ForbiddenException('Email or password incorrect');
     const isValid = await bcrypt.compare(dto.password, user.hashedPassword);
+    // パスワードが一致しない場合
     if (!isValid) throw new ForbiddenException('Email or password incorrect');
+    // 成功した場合
     return this.generateJwt(user.id, user.email);
   }
 
+  // JWTを生成する
   async generateJwt(userId: number, email: string): Promise<Jwt> {
     const payload = {
       sub: userId,

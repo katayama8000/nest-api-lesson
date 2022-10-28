@@ -5,6 +5,7 @@ import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from '@prisma/client';
 
+// jwtがないとアクセスできないようにする
 @UseGuards(AuthGuard('jwt'))
 @Controller('user')
 export class UserController {

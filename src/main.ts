@@ -7,14 +7,13 @@ import * as csurf from 'csurf';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // dtoに含まれないプロパティがある場合にエラーを返す
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.enableCors({
     credentials: true,
-    origin: [
-      'http://localhost:3000',
-      'https://frontend-todo-nextjs.vercel.app',
-    ],
+    origin: ['http://localhost:3000'],
   });
+  // フロントから受け取ったcookieをパース
   app.use(cookieParser());
   app.use(
     csurf({

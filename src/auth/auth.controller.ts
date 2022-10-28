@@ -17,6 +17,7 @@ import { Csrf, Msg } from './interfaces/auth.interface';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  // csrfTokenを生成する
   @Get('/csrf')
   getCsrfToken(@Req() req: Request): Csrf {
     return { csrfToken: req.csrfToken() };
@@ -41,13 +42,14 @@ export class AuthController {
       path: '/',
     });
     return {
-      message: 'ok',
+      message: 'success login',
     };
   }
 
   @HttpCode(HttpStatus.OK)
   @Post('/logout')
   logout(@Req() req: Request, @Res({ passthrough: true }) res: Response): Msg {
+    // cookieをリセットする
     res.cookie('access_token', '', {
       httpOnly: true,
       secure: false,
@@ -55,7 +57,7 @@ export class AuthController {
       path: '/',
     });
     return {
-      message: 'ok',
+      message: 'success logout',
     };
   }
 }

@@ -30,3 +30,6 @@ nest g module user
 nest g controller user --no-spec
 nest g service user --no-spec
 ```
+
+## deploy
+[render](https://dashboard.render.com/)

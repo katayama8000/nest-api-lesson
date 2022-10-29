@@ -11,7 +11,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.enableCors({
     credentials: true,
-    origin: ['http://localhost:3000'],
+    origin: [
+      'http://localhost:3000',
+      'https://next-api-lesson-frontend-lzv8e96mk-katayama8000.vercel.app/',
+    ],
   });
   // フロントから受け取ったcookieをパース
   app.use(cookieParser());

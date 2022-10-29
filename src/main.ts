@@ -13,7 +13,7 @@ async function bootstrap() {
     credentials: true,
     origin: [
       'http://localhost:3000',
-      'https://next-api-lesson-frontend-lzv8e96mk-katayama8000.vercel.app/',
+      'https://next-api-lesson-frontend-lzv8e96mk-katayama8000.vercel.app',
     ],
   });
   // フロントから受け取ったcookieをパース
